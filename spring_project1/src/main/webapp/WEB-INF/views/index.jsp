@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>카네스블랙 카페</title>
 </head>
 <body>
-
+	<div id="conainer">
+		<h2 id="menuAdmin">공지사항</h2>
+	<div id="menuList">
+	</div>
+	</div>
 </body>
 </html>
