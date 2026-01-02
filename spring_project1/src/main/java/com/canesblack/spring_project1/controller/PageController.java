@@ -10,12 +10,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PageController {
 	
 	@GetMapping("/")
-	public String returnHome() {
+	public String Home() {
 		return "index";
 		
 	}
 	//페이지를 조회 및 이동할때 위와 같이 @GetMapping을 써서 이동.
-	
+	//->localhost:8080/register
+	@GetMapping("/register")
+	public String registerPage() {
+		return "register/index";
+	}
+	//->localhost:8080/loginPage
+	@GetMapping("/loginPage")
+	public String loginPage() {
+		return "login/index";
+	}
 	//@PostMapping()
 	//@PutMapping()
 	//@DeleteMapping()
