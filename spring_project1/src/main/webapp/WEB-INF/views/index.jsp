@@ -7,7 +7,7 @@
 <title>카네스블랙 카페</title>
 </head>
 <body>
-	<div id="conainer">
+	<div id="container">
 		<h2 id="menuAdmin">공지사항</h2>
 	<div id="menuList">
 	</div>
