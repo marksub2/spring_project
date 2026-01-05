@@ -29,7 +29,7 @@
 		</form>
 		<div id="register-link">
 		<!-- localhost 8080/register -->
-			<a href="${pageContext.request.contextPath}/register">회원가입</a>
+			<a href="${pageContext.request.contextPath}/registerPage">회원가입</a>
 		</div>
 	</div></div>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

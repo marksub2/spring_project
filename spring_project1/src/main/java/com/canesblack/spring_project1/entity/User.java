@@ -1,7 +1,7 @@
 package com.canesblack.spring_project1.entity;
 
 
-@Lombok
+//MVC의 모델영역에 해당.
 public class User {
 	
 	private int idx;

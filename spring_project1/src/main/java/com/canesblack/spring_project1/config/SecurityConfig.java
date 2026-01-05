@@ -1,9 +1,9 @@
 package com.canesblack.spring_project1.config;
-
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import java.io.IOException;
 import java.util.Arrays;
-
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,7 +38,7 @@ public class SecurityConfig {
 		
 		.authorizeHttpRequests(authz->authz.requestMatchers("/", "/loginPage", "/logout", "/noticeCheckPage", "/register", "/menu/all")
 				.permitAll()
-				.requestMatchers(HttpMethod.POST,"/login").permitAll()
+				.requestMatchers(HttpMethod.POST,"/login", "/register").permitAll()
 				.requestMatchers("/resources/**","/WEB-INF/**").permitAll()
 				.requestMatchers("/noticerAdd","noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
 				 .requestMatchers(HttpMethod.POST, "/menu/add").hasAnyAuthority("ADMIN","MANAGER")
@@ -97,6 +97,11 @@ public class SecurityConfig {
 		
 	}
 	
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 	
 	@Bean
 	public CorsConfigurationSource corsCorsfigurationSource() {
