@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %> 
 
 	<div id="login-container-wrapper">
 	<div id="login-container">
