@@ -36,7 +36,7 @@ public class SecurityConfig {
 		.cors(cors -> cors.configurationSource(corsCorsfigurationSource()))
 		.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
 		
-		.authorizeHttpRequests(authz->authz.requestMatchers("/", "/loginPage", "/logout", "/noticeCheckPage", "/register", "/menu/all")
+		.authorizeHttpRequests(authz->authz.requestMatchers("/", "/loginPage", "/logout", "/noticeCheckPage", "/register", "/registerPage", "/menu/all")
 				.permitAll()
 				.requestMatchers(HttpMethod.POST,"/login", "/register").permitAll()
 				.requestMatchers("/resources/**","/WEB-INF/**").permitAll()
