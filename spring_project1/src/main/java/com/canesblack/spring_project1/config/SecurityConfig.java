@@ -35,16 +35,18 @@ public class SecurityConfig {
 		// 백엔드 영역으로 데이터가 넘어갈때, 자바스크립트에다가 
 		.cors(cors -> cors.configurationSource(corsCorsfigurationSource()))
 		.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
+		//always if_required never 중에 사용
 		
 		.authorizeHttpRequests(authz->authz.requestMatchers("/", "/loginPage", "/logout", "/noticeCheckPage", "/register", "/registerPage", "/menu/all")
 				.permitAll()
 				.requestMatchers(HttpMethod.POST,"/login", "/register").permitAll()
 				.requestMatchers("/resources/**","/WEB-INF/**").permitAll()
-				.requestMatchers("/noticerAdd","noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
+				.requestMatchers("/noticeAdd","noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
 				 .requestMatchers(HttpMethod.POST, "/menu/add").hasAnyAuthority("ADMIN","MANAGER")
 				 .requestMatchers(HttpMethod.POST, "/menu/update").hasAnyAuthority("ADMIN","MANAGER")
 				 .requestMatchers(HttpMethod.DELETE, "/menu/delete").hasAnyAuthority("ADMIN","MANAGER")
 				 .anyRequest().authenticated()
+				 //로그인을해야하지만 접근이 가능하게끔 그렇기때문에 자동으로 로그인페이지로감.
 				)
 		
 		
@@ -59,16 +61,17 @@ public class SecurityConfig {
 			)
 		
 		.logout(logout->logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/")
-				.invalidateHttpSession(true)//세션 무효화
-				.deleteCookies("JSESSIONID")
-				.permitAll()
+				.logoutSuccessUrl("/")//로그아웃성공후 이 url로 리다이렉팅
+				.invalidateHttpSession(true)//세션 무효화=> 세션 공간에 있던 데이터 무효화
+				.deleteCookies("JSESSIONID")//쿠키삭제
+				.permitAll()// 위 기능을 수행하려면 이 메소드 실행
 	
 				
 				);
 		//로그 아웃 url을 통해 로그아웃 진행
 		
 		return http.build();
+		//최종 http에 적용시킬때 사용하는 메소드
 	}
 	
 	@Bean
@@ -88,7 +91,10 @@ public class SecurityConfig {
 					session.setAttribute("MANAGER", true);
 				}
 				session.setAttribute("username", authentication.getName());
-				session.setAttribute("isAuthenticatied", true);
+				//세선에 로그인한 아이디 저장
+				session.setAttribute("isAuthenticated", true);
+				//세션에다가 로그인됬냐 여부를 저장
+				//request.getContextPath()=>localhost:8080
 				response.sendRedirect(request.getContextPath()+"/");
 				// TODO Auto-generated method stub
 				super.onAuthenticationSuccess(request, response, authentication);

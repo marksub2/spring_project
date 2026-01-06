@@ -28,11 +28,17 @@ public class PageController {
 		model.addAttribute("_csrf",csrfToken);
 		return "register/index";
 	}
-	//->localhost:8080/loginPage
+	
 	@GetMapping("/loginPage")
-	public String loginPage() {
+	public String loginPage(HttpServletRequest request, org.springframework.ui.Model model) {
+		
+		CsrfToken csrfToken = (CsrfToken)request.getAttribute(CsrfToken.class.getName());
+		model.addAttribute("_csrf",csrfToken);
 		return "login/index";
 	}
+	
+	//->localhost:8080/loginPage
+	
 	//@PostMapping()
 	//@PutMapping()
 	//@DeleteMapping()
