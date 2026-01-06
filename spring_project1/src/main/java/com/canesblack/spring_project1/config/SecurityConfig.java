@@ -41,7 +41,7 @@ public class SecurityConfig {
 				.permitAll()
 				.requestMatchers(HttpMethod.POST,"/login", "/register").permitAll()
 				.requestMatchers("/resources/**","/WEB-INF/**").permitAll()
-				.requestMatchers("/noticeAdd","noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
+				.requestMatchers("/noticeAddPage","noticeModifyPage").hasAnyAuthority("ADMIN","MANAGER")
 				 .requestMatchers(HttpMethod.POST, "/menu/add").hasAnyAuthority("ADMIN","MANAGER")
 				 .requestMatchers(HttpMethod.POST, "/menu/update").hasAnyAuthority("ADMIN","MANAGER")
 				 .requestMatchers(HttpMethod.DELETE, "/menu/delete").hasAnyAuthority("ADMIN","MANAGER")
