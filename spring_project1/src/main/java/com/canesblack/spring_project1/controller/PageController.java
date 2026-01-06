@@ -64,19 +64,11 @@ public class PageController {
 		model.addAttribute("menu",menu);
 		return "noticeCheck/index";
 	}
-	//@GetMapping("/noticeModifyPage")
-	//public String showNoticeModifyPage(@RequestParam("idx") int idx,Model model) {
-	//	Menu menu = menuRestService.boardContent(idx);
-	//	model.addAttribute("menu",menu);
-	//	return "noticeModify/index";
-	//}
 	@GetMapping("/noticeModifyPage")
-	public String showNoticeModifyPage(@RequestParam("idx") int idx, Model model) {
-	    System.out.println("컨트롤러 도착! 요청받은 idx: " + idx); // 이 로그가 콘솔에 찍히는지 확인
-	    
-	    Menu menu = menuRestService.boardContent(idx);
-	    model.addAttribute("menu", menu);
-	    return "noticeModify/index"; 
+	public String showNoticeModifyPage(@RequestParam("idx") int idx,Model model) {
+		Menu menu = menuRestService.boardContent(idx);
+		model.addAttribute("menu",menu);
+		return "noticeModify/index";
 	}
 	
 }
