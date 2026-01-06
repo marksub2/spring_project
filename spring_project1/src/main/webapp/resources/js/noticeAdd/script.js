@@ -5,10 +5,11 @@ document.getElementById("buttonSubmit").addEventListener("click",function(){
 	    title: document.getElementById("title").value,
 	    content: document.getElementById("content").value,
 	    writer: document.getElementById("writer").value,
-		indate:new Date(.toISOString.split("T")[0],
+	
 	};
 
 	console.log(formData);
+
 
 //index.jsp파일에서 만든 메타CSRF태그두개를 js파일로 가져온다.
 const csrfToken = document.querySelector("meta[name='_csrf']").getAttribute("content");
@@ -24,9 +25,9 @@ const csrfHeader = document.querySelector("meta[name='_csrf_header']").getAttrib
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('공지사항 작성실패');
         }
-        return response.text(); // JSON 대신 텍스트로 응답 처리
+        return response.text(); // 게시글 잘 작성됨.
     })
     .then(data => {
         console.log('Success:', data);
@@ -34,6 +35,6 @@ const csrfHeader = document.querySelector("meta[name='_csrf_header']").getAttrib
         window.location.href = '/';
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('Error가 발생:', error);
     });
 });

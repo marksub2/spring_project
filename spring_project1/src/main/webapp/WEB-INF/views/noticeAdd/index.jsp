@@ -32,7 +32,7 @@
                 <label for="writer">작성자</label>
                 <input type="text" id="writer" name="writer" placeholder="작성자" maxlength="10" value="${writer}" readonly>
                 
-                
+            
                 
                 <input type="hidden" id="indate" name="indate">
             

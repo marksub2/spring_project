@@ -1,6 +1,5 @@
-//DOM 객체 연결 html혹은jsp파일안에 있는 태그 즉 객체들을 자바스크립트와 연결시키는 과정
-
-
+//DOM 객체 연결(html혹은jsp파일안에 있는 태그들,
+//	즉 객체들을 자바스크립트와 연결시키는과정!)
 const container = document.getElementById("container");
 const menuAdmin = document.getElementById("menuAdmin");
 const menuList = document.getElementById("menuList");
@@ -11,7 +10,7 @@ const csrfToken = document.querySelector("meta[name='_csrf']").getAttribute('con
 const csrfHeader = document.querySelector("meta[name='_csrf_header']").getAttribute('content');
 
 
-//데이터를 조회할떄 사용할 기능을 정의해야함.
+//데이터를 조회할떄 사용할 기능을 정의해야합니다.
 function fetchMenus(){
 	fetch("/menu/all").then(response => response.json())
 	.then(menus => {
@@ -30,7 +29,7 @@ function fetchMenus(){
 			<br/>
 			<br/>
 				`
-			//게시글을 메인페이지에서 하나씩 클릭할 때	
+			//게시글을 메인페이지에서 하나씩 클릭할때	
 				menuItem.querySelector(".menu-link").addEventListener('click',(event)=>{
 					event.preventDefault();
 					console.log(`event:${event}`);
